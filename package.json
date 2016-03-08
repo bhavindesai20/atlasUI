@@ -1,0 +1,22 @@
+{
+  "name": "febatlasui",
+  "version": "0.0.0",
+  "description": "UI Module for MovieApp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhavindesai20/febatlas"
+  },
+  "author": "Bhavinkumar Desai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bhavindesai20/febatlas/issues"
+  },
+  "homepage": "https://github.com/bhavindesai20/febatlas",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-inject": "^3.0.0",
+    "main-bower-files": "^2.11.1"
+  }
+}
