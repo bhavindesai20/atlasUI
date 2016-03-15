@@ -1,44 +1,34 @@
-angular.module('febatlas').factory('UserService',['$http','$q',function($http, $q){
-    var serverUserEndPoint = 'http://localhost:8083/febatlas/api/users';
+/**
+ * Created by Bhavinkumar on 3/3/2016.
+ */
 
-    var userRest ={
+angular.module('febatlas').service('UserService', UserService);
 
-        getUser : function(id){
-            return $http({
-                method: 'GET',
-                url: serverUserEndPoint + "/"+id
-            });
-        },
+UserService.$inject = ['$http','$q'];
 
-        addUser : function(user){
-            return $http({
-                method: 'POST',
-                url: serverUserEndPoint,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-                data:user
-            });
-        },
+function UserService($http, $q) {
 
-        updateUser : function(user){
-            return $http({
-                method: 'PUT',
-                url: serverUserEndPoint,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-                data:user
-            });
-        },
+    var serverUserEndPoint = 'http://localhost:8083/febatlas';
+    var self = this;
+    self.login = login;
+    self.getUserByEmail = getUserByEmail;
 
-        deleteUser : function(id){
-            return $http({
-                method: 'DELETE',
-                url: serverUserEndPoint + "/"+id
-            });
-        }
-    };
+    function login(user){
+        return $http.post(serverUserEndPoint+'/users/login', user)
+            .then(successFn, errorFn);
+    }
 
-    return userRest;
-}]);
+    function getUserByEmail(email){
+        return $http.get(serverUserEndPoint+'/api/users/email/'+email+'/')
+            .then(successFn, errorFn);
+    }
+
+    function successFn (response) {
+        return response.data;
+    }
+
+    function errorFn(response) {
+        return $q.reject(response.status);
+    }
+
+}

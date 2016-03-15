@@ -1,49 +1,56 @@
-angular.module('febatlas').factory('CommentsService',['$http','$q',function($http, $q){
-    var serverCommentEndPoint = 'http://localhost:8083/febatlas/api/comments';
+/**
+ * Created by Bhavinkumar on 3/3/2016.
+ */
+(function() {
 
-    var commandRest ={
+    angular
+        .module('febatlas')
+        .service('CommentsService', CommentsService);
 
-        addComment : function(titleId,userId,comment){
-            return $http({
-                method: 'POST',
-                url: serverCommentEndPoint+"/"+titleId+"/"+userId,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-                data:comment
-            });
-        },
-        updateComment : function(titleId,userId,comment){
-            return $http({
-                method: 'POST',
-                url: serverCommentEndPoint+"/"+titleId+"/"+userId,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                },
-                data:comment
-            });
-        },
-        deleteComment : function(titleId,userId,commentId){
-            return $http({
-                method: 'DELETE',
-                url: serverCommentEndPoint+"/"+titleId+"/"+userId+"/"+commentId
-            });
-        },
+    CommentsService.$inject = ['$http','$q'];
 
-        getCommentByTitle : function(titleId){
-            return $http({
-                method: 'GET',
-                url: serverCommentEndPoint +"/title/"+titleId
-            });
-        },
+    function CommentsService($http, $q) {
+        var serverCommentEndPoint = 'http://localhost:8083/febatlas';
+        var self = this;
 
-        getCommentByUser : function(userId){
-            return $http({
-                method: 'GET',
-                url: serverCommentEndPoint +"/user/"+userId
-            });
+        self.addComment = addComment;
+        self.updateComment = updateComment;
+        self.deleteComment = deleteComment;
+        self.getCommentByTitle = getCommentByTitle;
+        self.getCommentByUser = getCommentByUser;
+
+        function addComment(titleId,userId,comment) {
+            return $http.post(serverCommentEndPoint+"/api/comments/"+titleId+"/"+userId, comment)
+                .then(successFn, errorFn);
         }
-    };
 
-    return commandRest;
-}]);
+        function updateComment(titleId,userId,comment) {
+            return $http.put(serverCommentEndPoint+"/api/comments/"+titleId+"/"+userId, comment)
+                .then(successFn, errorFn);
+        }
+
+        function deleteComment(titleId,userId,commentId) {
+            return $http.delete(serverCommentEndPoint+"/api/comments/"+titleId+"/"+userId+"/"+commentId)
+                .then(successFn, errorFn);
+        }
+
+        function getCommentByTitle(titleId){
+            return $http.get(serverCommentEndPoint +"/comments/title/"+titleId)
+                .then(successFn, errorFn);
+        }
+
+        function getCommentByUser(userId){
+            return $http.get(serverCommentEndPoint +"/api/comments/user/"+userId)
+                .then(successFn, errorFn);
+        }
+
+        function successFn (response) {
+            return response.data;
+        }
+
+        function errorFn(response) {
+            return $q.reject(response.status);
+        }
+    }
+
+})();

@@ -1,3 +1,7 @@
+/**
+ * Created by Bhavinkumar on 3/3/2016.
+ */
+
 (function() {
 
     angular
@@ -8,11 +12,8 @@
 
     function TitleService($http, $q) {
 
-        var serverTitleEndPoint = 'http://localhost:8083/febatlas/api/titles';
+        var serverTitleEndPoint = 'http://localhost:8083/febatlas';
         var self = this;
-        var headerConfig ={
-            headers: {'Content-Type': 'application/json;charset=UTF-8'}
-        };
         self.getAllTitle = getAllTitle;
         self.getTitle = getTitle;
         self.addTitle = addTitle;
@@ -25,47 +26,47 @@
 
 
         function getAllTitle(){
-            return $http.get(serverTitleEndPoint)
+            return $http.get(serverTitleEndPoint+'/titles')
                 .then(successFn, errorFn);
         }
 
         function getTitle(id){
-            return $http.get(serverTitleEndPoint+'/'+id)
+            return $http.get(serverTitleEndPoint+'/titles/'+id)
                 .then(successFn, errorFn);
         }
 
         function addTitle(title) {
-            return $http.post(serverTitleEndPoint, title)
+            return $http.post(serverTitleEndPoint+'/api/titles', title)
                 .then(successFn, errorFn);
         }
 
         function updateTitle(titleId, title) {
-            return $http.put(serverTitleEndPoint +'/'+ titleId, title)
+            return $http.put(serverTitleEndPoint+'/api/titles', title)
                 .then(successFn, errorFn);
         }
 
         function deleteTitle(titleId) {
-            return $http.delete(serverTitleEndPoint +'/' + titleId)
+            return $http.delete(serverTitleEndPoint +'/api/titles/' + titleId)
                 .then(successFn, errorFn);
         }
 
         function getTitleBySerach(query){
-            return $http.get(serverTitleEndPoint +"/titlefilter?title="+query)
+            return $http.get(serverTitleEndPoint +"/titles/titlefilter?title="+query)
                 .then(successFn, errorFn);
         }
 
         function getTitleByType(query){
-            return $http.get(serverTitleEndPoint +"/typefilter?type="+query)
+            return $http.get(serverTitleEndPoint +"/titles/typefilter?type="+query)
                 .then(successFn, errorFn);
         }
 
         function getTitleByYear(query){
-            return $http.get(serverTitleEndPoint +"/yearfilter?year="+query)
+            return $http.get(serverTitleEndPoint +"/titles/yearfilter?year="+query)
                 .then(successFn, errorFn);
         }
 
         function getTitleByGenre(query){
-            return $http.get(serverTitleEndPoint +"/genrefilter?genre="+query)
+            return $http.get(serverTitleEndPoint +"/titles/genrefilter?genre="+query)
                 .then(successFn, errorFn);
         }
 
