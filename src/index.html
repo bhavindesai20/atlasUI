@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en" ng-app="febatlas">
+<html ng-app="febatlas">
 <head>
     <meta charset="UTF-8">
-    <title>Feb Atlas - The Movie Plaza</title>
+    <title>Movie Plaza</title>
 
     <!-- bower:css -->
     <!-- endinject -->
@@ -10,15 +10,36 @@
     <!-- inject:css -->
     <!-- endinject -->
 
+    <!-- vendor.min:css -->
+    <!-- endinject -->
+
+    <!-- app.min:css -->
+    <!-- endinject -->
+
 </head>
-<body ng-controller="TitleController as titleCntl">
-    Hello Index Page.
+<body>
+<div class="container">
 
-    <!-- bower:js -->
-    <!-- endinject -->
+    <header ng-controller="HeaderController as headerCntl" ng-include="'/views/header.tmpl.html'"></header>
 
-    <!-- inject:js -->
-    <!-- endinject -->
+    <section ng-view></section>
 
+    <footer ng-controller="FooterController as footerCntl" ng-include="'/views/footer.tmpl.html'"></footer>
+
+
+</div>
+
+<!-- bower:js -->
+<!-- endinject -->
+
+
+<!-- inject:js -->
+<!-- endinject -->
+
+<!-- vendor.min:js -->
+<!-- endinject -->
+
+<!-- app.min:js -->
+<!-- endinject -->
 </body>
 </html>
