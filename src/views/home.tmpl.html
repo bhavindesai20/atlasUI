@@ -1,0 +1,14 @@
+<div class="hero-unit homeTop">
+    <h1 class="header-text">
+        <p class="text-center"> MovieFlix<img src="images/movie_basket.png" height="55" width="55">
+        </p>
+    </h1>
+</div>
+
+<div class="homeCarousel">
+    <uib-carousel active="0" interval="homeCntl.myInterval" no-wrap="false">
+        <uib-slide ng-repeat="slide in homeCntl.slides track by slide.id" index="slide.id">
+            <img ng-src="{{slide.image}}" style="margin:auto;"/>
+        </uib-slide>
+    </uib-carousel>
+</div>

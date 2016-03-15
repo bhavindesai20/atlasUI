@@ -1,0 +1,109 @@
+<div class="row" id="titleTop">
+    <div class="col-md-6">
+        <h1 class="titleHeading">Choose Your Title</h1>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group col-sm-6 titleSearch">
+            <div class="input-group-addon">Search</div>
+            <input type="text" class="form-control" ng-model="titleCntl.searchTitle">
+        </div>
+    </div>
+</div>
+
+<div class="row filterSort">
+    <uib-accordion>
+        <uib-accordion-group is-open="false">
+
+            <uib-accordion-heading>
+                Sorting and Filters <i class="pull-right glyphicon glyphicon-refresh" ng-click="titleCntl.titleClearFilter()"></i>
+            </uib-accordion-heading>
+
+
+            <div class="col-md-6" id="titleFiltering">
+                <div class="titlebtngroup">
+
+                    <form class="form-inline" ng-submit="titleCntl.titleFilter()">
+
+                        <div class="form-group">
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="titleCntl.filterOptions.type" ng-required="!titleCntl.filterOptions.type" value="Year">Year
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="titleCntl.filterOptions.type" ng-required="!titleCntl.filterOptions.type" value="Genre">Genre
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="titleCntl.filterOptions.type" ng-required="!titleCntl.filterOptions.type" value="Type">Type
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">{{titleCntl.filterOptions.type}}</div>
+                                <input type="text" required class="form-control" ng-model="titleCntl.filterOptions.value" />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-filter"></i></button>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-md-6" id="titleSorting">
+                <div class="titlebtngroup">
+                    <span>Sort By :</span>
+                    <button type="button" class="btn btn-primary" ng-click="titleCntl.sortTitle(titleCntl.sortType.Year)">Year</button>
+                    <button type="button" class="btn btn-primary" ng-click="titleCntl.sortTitle(titleCntl.sortType.imdbRating)">Imdb Rating</button>
+                    <button type="button" class="btn btn-primary" ng-click="titleCntl.sortTitle(titleCntl.sortType.imdbVotes)">Imdb Votes</button>
+                </div>
+            </div>
+        </uib-accordion-group>
+    </uib-accordion>
+</div>
+
+<div class="row" id="titleList">
+    <div class="col-sm-4 col-md-3" ng-repeat="t in (titleCntl.titles).slice(((titleCntl.currentPage-1)*12), (titleCntl.currentPage*12))| filter:titleCntl.searchTitle">
+        <div class="thumbnail">
+            <img ng-src="{{t.poster}}" ng-click="titleCntl.setTitle(t.id)">
+            <div class="caption">
+                <p><strong>{{t.title}} - {{t.year}}</strong></p>
+                <p><a ng-href="http://www.imdb.com/title/{{t.imdbID}}">Imdb</a>: Rating-{{t.imdbRating}},Votes-{{t.imdbVotes}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="titlePagination">
+        <uib-pagination total-items="titleCntl.totalItems" class="pagination-sm" max-size="3" ng-change="titleCntl.pageChanged()" boundary-links="true" ng-model="titleCntl.currentPage" rotate="false" items-per-page="12"></uib-pagination>
+    </div>
+
+</div>
+
+<!--
+<div class="row" id="febatlasTopRated">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"> MovieFlix Top Rated </h2>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-4 col-md-3" ng-repeat="">
+                <div class="thumbnail">
+                    <img ng-src="" ng-click="">
+                    <div class="caption">
+                        <p><strong>{{}} - {{}}</strong></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,156 @@
+<h1> Add, Update and Delete Title</h1>
+<div  id="adminManage">
+    <div class="row">
+        <form name="addTitleForm" id="addTitleForm" ng-submit="adminCntl.submitTitle(addTitleForm.$valid)" novalidate>
+
+            <div class="col-sm-6">
+
+                <div class="form-group">
+                    <label for="title">Title Name</label>
+                    <input type="text" name="title" required class="form-control" id="title" placeholder="Title Name" ng-model="adminCntl.newTitle.title">
+                    <div class="error" ng-messages="addTitleForm.title.$error" ng-if="addTitleForm.title.$dirty">
+                        <p ng-message="required">Title Name is required</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                <label for="year">Year</label>
+                <input type="text" name="year" required class="form-control" id="year" placeholder="year" ng-model="adminCntl.newTitle.year">
+                <div class="error" ng-messages="addTitleForm.year.$error" ng-if="addTitleForm.year.$dirty">
+                    <p ng-message="required">year is required</p>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <label for="rated">Title Rated As</label>
+                    <input type="text" name="rated" class="form-control" id="rated" placeholder="PG or R" ng-model="adminCntl.newTitle.rated">
+                </div>
+
+                <div class="form-group">
+                    <label for="released">Released</label>
+                    <input type="text" name="released" required pattern="^\d{4}([./-])\d{2}\1\d{2}$" class="form-control" id="released" placeholder="yyyy-mm-dd format only" ng-model="adminCntl.newTitle.released">
+                    <div class="error" ng-messages="addTitleForm.released.$error" ng-if="addTitleForm.released.$dirty">
+                        <p ng-message="required">Date is required</p>
+                        <p ng-message="pattern">Date must be in yyyy-mm-dd format.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="runtime">Runtime</label>
+                    <input type="text" name="runtime" class="form-control" id="runtime" placeholder="run-time in minutes" ng-model="adminCntl.newTitle.runtime">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input type="text" name="genre" class="form-control" id="genre" placeholder="action, comedy etc." ng-model="adminCntl.newTitle.genre">
+                </div>
+
+                <div class="form-group">
+                    <label for="director">Director</label>
+                    <input type="text" name="director" class="form-control" id="director" placeholder="name with comma separated" ng-model="adminCntl.newTitle.director">
+                </div>
+
+                <div class="form-group">
+                    <label for="writer">Writer</label>
+                    <input type="text" name="writer" class="form-control" id="writer" placeholder="name with comma separated" ng-model="adminCntl.newTitle.writer">
+                </div>
+
+                <div class="form-group">
+                    <label for="actors">Actors</label>
+                    <input type="text" name="actors" class="form-control" id="actors" placeholder="name with comma separated" ng-model="adminCntl.newTitle.actors">
+                </div>
+
+                <div class="form-group">
+                    <label for="plot">Movie Description</label>
+                    <input type="textarea" name="plot" class="form-control" id="plot" placeholder="title description" ng-model="adminCntl.newTitle.plot">
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="language">Language support</label>
+                    <input type="text" name="language" class="form-control" id="language" placeholder="in languages" ng-model="adminCntl.newTitle.language">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" name="country" class="form-control" id="country" placeholder="country" ng-model="adminCntl.newTitle.country">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="awards">Awards</label>
+                    <input type="text" name="awards" class="form-control" id="awards" placeholder="awards" ng-model="adminCntl.newTitle.awards">
+                </div>
+
+                <div class="form-group">
+                    <label for="poster">Poster URL</label>
+                    <input type="text" name="poster" class="form-control" id="poster" placeholder="poster url" ng-model="adminCntl.newTitle.poster">
+                </div>
+
+                <div class="form-group">
+                    <label for="metaScore">Metascore</label>
+                    <input type="text" name="metaScore" class="form-control" id="metaScore" placeholder="metascore" ng-model="adminCntl.newTitle.metaScore">
+                </div>
+
+                <div class="form-group">
+                    <label for="imdbRating">ImdbRating</label>
+                    <input type="text" name="imdbRating" class="form-control" id="imdbRating" placeholder="imdbRating" ng-model="adminCntl.newTitle.imdbRating">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="imdbVotes">imdbVotes</label>
+                    <input type="text" name="imdbVotes" class="form-control" id="imdbVotes" placeholder="imdbVotes" ng-model="adminCntl.newTitle.imdbVotes">
+                </div>
+
+                <div class="form-group">
+                    <label for="imdbId">imdbID</label>
+                    <input type="text" name="imdbId" class="form-control" id="imdbId" placeholder="imdbId" ng-model="adminCntl.newTitle.imdbId">
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Title type</label>
+                    <input type="text" name="type" required class="form-control" id="type" placeholder="type" ng-model="adminCntl.newTitle.type">
+                    <div class="error" ng-messages="addTitleForm.type.$error" ng-if="addTitleForm.type.$dirty">
+                        <p ng-message="required">type is required</p>
+                    </div>
+                </div>
+                    <button type="submit" class="btn btn-primary btnaddTitle" ng-disabled="!addTitleForm.$valid" ng-if="!adminCntl.submitUpdate">Add Title</button>
+                    <button type="submit" class="btn btn-primary btnaddTitle" ng-disabled="!addTitleForm.$valid" ng-if="adminCntl.submitUpdate">Update Title</button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div  id="adminAllTitle">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Delete</th>
+                <th>Edit</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actors</th>
+                <th>Genre</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="title in adminCntl.titles | orderBy:'-id'">
+                <td><i ng-click="adminCntl.deleteTitle(title.id)" class="glyphicon glyphicon-remove"></i></td>
+                <td><i ng-click="adminCntl.editTitle(title)" class="glyphicon glyphicon-pencil"></i></td>
+                <td>{{title.title}}</td>
+                <td>{{title.plot}}</td>
+                <td>{{title.actors}}</td>
+                <td>{{title.genre}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <!-- Login -->
+        <div class="col-sm-8">
+            <h3>Login</h3>
+            <form class="form-inline"  ng-submit="userCntl.login()">
+                <div class="form-group">
+                    <input type="email" required class="form-control" id="email"
+                           placeholder="Email" ng-model="userCntl.userCredential.email">
+                </div>
+                <div class="form-group">
+                    <input type="password"required  class="form-control" id="password"
+                           placeholder="Password" ng-model="userCntl.userCredential.password">
+                </div>
+                <button type="submit"  class="btn btn-default">Sign in</button>
+            </form>
+            <div class="front-text">
+                <h4>New Movies Added Everyday</h4>
+                <span>All your latest blockbusters are updated to MovieFlix	&copy; upon their release</span>
+
+                <h4>Stream Anywhere</h4>
+                <span>Now, watch all your movies from any device. Be it be PC, Tablet, or even your TV</span>
+
+                <h4>TV Episodes and Comics</h4>
+                <span>Now, you and your kids can watch unlimited TV episodes and Comics from MovieFlix &copy;</span>
+            </div>
+        </div>
+
+        <!-- Register -->
+        <div class="col-sm-4">
+            <div class="">
+
+                <h3><i class="fa fa-shield"></i> Register now</h3>
+                <hr>
+                <div class="form-group">
+                    <label class="control-label" for="">First Name</label>
+                    <input type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Email Address">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="">Email</label>
+                    <input type="text" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="">Password</label>
+                    <input type="text" class="form-control" placeholder="Repeat Password">
+                </div>
+
+                <small>
+                    By clicking Sign Up, you agree to our Terms and that you have read our
+                    Data Use Policy, including our Cookie Use.
+                </small>
+                <div style="height:10px;"></div>
+                <div class="form-group">
+                    <label class="control-label" for=""></label>
+                    <input type="submit" value="Sign Up" class="btn btn-default">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
