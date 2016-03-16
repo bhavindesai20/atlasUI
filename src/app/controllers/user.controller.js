@@ -35,6 +35,17 @@
                     localStorage.removeItem("token");
         };
 
+        userCntl.signUp = function(){
+
+            UserService.signUp(userCntl.userDetails)
+                .then(function(data) {
+                    $location.path('/user');
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        };
+
     }
 
 })();

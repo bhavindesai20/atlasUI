@@ -8,10 +8,11 @@ UserService.$inject = ['$http','$q'];
 
 function UserService($http, $q) {
 
-    var serverUserEndPoint = 'http://localhost:8083/febatlas';
+    var serverUserEndPoint = 'http://localhost:8080/febatlas';
     var self = this;
     self.login = login;
     self.getUserByEmail = getUserByEmail;
+    self.signUp=signUp;
 
     function login(user){
         return $http.post(serverUserEndPoint+'/users/login', user)
@@ -20,6 +21,10 @@ function UserService($http, $q) {
 
     function getUserByEmail(email){
         return $http.get(serverUserEndPoint+'/api/users/email/'+email+'/')
+            .then(successFn, errorFn);
+    }
+    function signUp(user){
+        return $http.post(serverUserEndPoint+'/users', user)
             .then(successFn, errorFn);
     }
 

@@ -27,28 +27,29 @@
         </div>
 
         <!-- Register -->
+        <form name="signUpForm" id="signUpForm" ng-submit="userCntl.signUp()" novalidate>
         <div class="col-sm-4">
             <div class="">
 
                 <h3><i class="fa fa-shield"></i> Register now</h3>
                 <hr>
                 <div class="form-group">
-                    <label class="control-label" for="">First Name</label>
-                    <input type="text" class="form-control" placeholder="Username">
+                    <label class="control-label" for="firstName">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" ng-model="userCntl.userDetails.firstname">
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Email Address">
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="">Email</label>
-                    <input type="text" class="form-control" placeholder="Password">
+                    <label class="control-label" for="lastName">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" ng-model="userCntl.userDetails.lastName">
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="">Password</label>
-                    <input type="text" class="form-control" placeholder="Repeat Password">
+                    <label class="control-label" for="email">Email</label>
+                    <input type="text" class="form-control" placeholder="Email" ng-model="userCntl.userDetails.email">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" ng-model="userCntl.userDetails.password">
                 </div>
 
                 <small>
@@ -57,12 +58,12 @@
                 </small>
                 <div style="height:10px;"></div>
                 <div class="form-group">
-                    <label class="control-label" for=""></label>
                     <input type="submit" value="Sign Up" class="btn btn-default">
                 </div>
 
             </div>
         </div>
+        </form>
     </div>
     </div>
 </div>
