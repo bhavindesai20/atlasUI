@@ -8,7 +8,7 @@ UserService.$inject = ['$http','$q'];
 
 function UserService($http, $q) {
 
-    var serverUserEndPoint = 'http://localhost:8083/febatlas';
+    var serverUserEndPoint = 'http://localhost:8080/febatlas';
     var self = this;
     self.login = login;
     self.getUserByEmail = getUserByEmail;
