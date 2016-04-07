@@ -12,7 +12,7 @@
 
     function TitleService($http, $q) {
 
-        var serverTitleEndPoint = 'http://localhost:8083/febatlas';
+        var serverTitleEndPoint = 'http://localhost:8080/febatlas';
         var self = this;
         self.getAllTitle = getAllTitle;
         self.getTitle = getTitle;
