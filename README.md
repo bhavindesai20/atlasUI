@@ -1,5 +1,7 @@
 # atlasUI
 
-Guided by Praveen Salitra.
+# Design and Developed By Bhavin and Guided by Praveen Salitra.
 
-This is an UI for FebAtlas Spring-Hibernate Based Project. Feel Free to Fork and Play with it.
+Bhavin Desai bhavindesai20@gmail.com
+
+API part is in https://github.com/bhavindesai20/febatlas
